@@ -2,10 +2,8 @@ class UrlMappings {
 
 	static mappings = {
 
-        "/api/books"(controller: "book", action: "index")
-        "/api/books/$id"(controller: "book", action: "show")
-
-        "/"(view:"/index")
+        "/api/books"(resources:'book')
+        "/books"(uri: '/index.html')
         "500"(view:'/error')
 	}
 }

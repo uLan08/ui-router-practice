@@ -2,7 +2,8 @@ var app = angular.module('restprac', ['ngResource', 'ui.router'])
 
 app.config(['$stateProvider', function($stateProvider){
     $stateProvider.state("allBooks", {
-        url: "api/books",
+        url: "/books",
+        templateUrl: "/template.html",
         resolve: {
             Book: 'Book',
             books: ['Book', function(Book){

@@ -16,8 +16,27 @@ class BookController {
     }
 
     def save(){
-        def newBook = Book(request.JSON)
-        newBook.save()
-        render {['inserted': true]} as JSON
+        def newBook = new Book(request.JSON)
+//        if(newBook.hasErrors()){
+            def results = newBook.errors.fieldErrors.toList()
+            def errors = []
+            for (error in results) {
+                errors.add([
+                        'type'          : 'invalid_entry',
+                        'field'         : error.field,
+                        'rejected_value': error.rejectedValue,
+                        'message'       : error.defaultMessage
+                ])
+            }
+
+//            render ([error: newBook.errors.fieldErrors] as JSON)
+//        }
+//        else{
+            newBook.save()
+//            render (['inserted': true] as JSON)
+            render errors as JSON
+
+//        }
+
     }
 }
