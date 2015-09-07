@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" ng-app="restprac">
+<head>
+    <meta charset="UTF-8">
+    <title>REST!</title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="BookController">
+
+    <div ng-repeat="book in books">
+        <strong>{{book.title}}</strong>
+        <small>by: {{book.author}}</small>
+    </div>
+</body>
+</html>
