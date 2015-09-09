@@ -1,7 +1,7 @@
 var app = angular.module('restprac', ['ngResource', 'ui.router'])
 
 app.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider){
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     $stateProvider.state("books", {
         url: "/books",
         templateUrl: "template.html",
