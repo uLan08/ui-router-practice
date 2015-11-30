@@ -20,10 +20,8 @@ app.config(['$stateProvider', '$locationProvider', function($stateProvider, $loc
                 $uibModal.open({
                     templateUrl: "modal.html",
                     controller: "ModalController"
-                }).result.then(function(result){
-                        if(result){
-                            return $state.transitionTo("books")
-                        }
+                }).result.finally(function(){
+                        $state.go('^')
                     })
             }
 
@@ -48,32 +46,33 @@ app.controller('BookController', ['$scope', 'books',function($scope, books){
 
 }])
 
-app.controller('ModalController', ['$scope', '$uibModal', function($scope, $uibModal){
-    //$scope.dismiss = function(){
-    //    $scope.dismiss()
+app.controller('ModalController', ['$scope', '$uibModal', '$state', function($scope, $uibModal, $state){
+    $scope.dismiss = function(){
+        $state.go("books")
+        $scope.$dismiss()
+    }
+
+    //$scope.temp = "walaw"
+    //$scope.open = function(){
+    //    console.log("nag sulod")
+    //    var modalInstance = $uibModal.open({
+    //        animation: true,
+    //        templateUrl: "modal.html",
+    //        controller: "ModalInstanceController"
+    //    })
+    //
+    //    modalInstance.result.then(function () {
+    //        $scope.temp = "temp variable"
+    //    })
     //}
-
-    $scope.temp = "walaw"
-    $scope.open = function(){
-        console.log("nag sulod")
-        var modalInstance = $uibModal.open({
-            animation: true,
-            templateUrl: "modal.html",
-            controller: "ModalInstanceController"
-        })
-
-        modalInstance.result.then(function () {
-            $scope.temp = "temp variable"
-        })
-    }
 }])
-
-app.controller('ModalInstanceController', ['$scope', '$uibModalInstance', function($scope, $uibModalInstance){
-    $scope.ok = function(){
-        $uibModalInstance.close()
-    }
-
-    $scope.cancel = function(){
-        $uibModalInstance.dismiss('cancel')
-    }
-}])
+//
+//app.controller('ModalInstanceController', ['$scope', '$uibModalInstance', function($scope, $uibModalInstance){
+//    $scope.ok = function(){
+//        $uibModalInstance.close()
+//    }
+//
+//    $scope.cancel = function(){
+//        $uibModalInstance.dismiss('cancel')
+//    }
+//}])
