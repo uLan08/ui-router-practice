@@ -6,8 +6,12 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery
-//= require_tree .
+//= require bower_components/angular/angular.js
 //= require_self
+//= require bower_components/angular-resource/angular-resource.js
+//= require bower_components/angular-ui-router/release/angular-ui-router.js
+//= require bower_components/angular-bootstrap/ui-bootstrap-tpls.js
+//= require_tree app
 
 if (typeof jQuery !== 'undefined') {
 	(function($) {
